@@ -1,0 +1,34 @@
+
+# OS / IDE
+.DS_Store
+.vscode/*
+!.vscode/tasks.json
+
+# Node
+node_modules/
+web/dist/
+web/.vite/
+
+# Java / Gradle / IntelliJ
+*.iml
+.gradle/
+build/
+out/
+**/target/
+**/build/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Logs & temp
+logs/
+*.log
+*.tmp
+
+# Python tools (optional)
+__pycache__/
+*.pyc
+
+# Env / Secrets
+.env
+.env.*
+secrets.*
+SLACK_WEBHOOK_URL

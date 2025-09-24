@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: ai-car-sales
+  datasource:
+    url: jdbc:postgresql://localhost:5432/app_db
+    username: app
+    password: app_password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+server:
+  port: 8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

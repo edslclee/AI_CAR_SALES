@@ -1,0 +1,16 @@
+.
+./bootstrap
+./bootstrap/context.md
+./bootstrap/git_status.txt
+./bootstrap/rehydrate.sh
+./bootstrap/tree.txt
+./bootstrap/prompt_bundle.md
+./deliverables
+./deliverables/prd.md
+./deliverables/tasks.md
+./rules
+./rules/3_task_exec_rules.md
+./rules/2_task_gen_rules.md
+./rules/1_prd_rules.md
+./.vscode
+./.vscode/task.json
