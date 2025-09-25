@@ -1,19 +1,16 @@
 package com.aicarsales.app.domain;
 
+import com.aicarsales.app.domain.converter.StringListJsonConverter;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.CollectionTable;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Convert;
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -39,11 +36,13 @@ public class Preference {
 
     private Short passengers;
 
-    @Column(name = "preferred_body_types", columnDefinition = "text[]")
-    private String[] preferredBodyTypes;
+    @Convert(converter = StringListJsonConverter.class)
+    @Column(name = "preferred_body_types")
+    private List<String> preferredBodyTypes;
 
-    @Column(name = "preferred_brands", columnDefinition = "text[]")
-    private String[] preferredBrands;
+    @Convert(converter = StringListJsonConverter.class)
+    @Column(name = "preferred_brands")
+    private List<String> preferredBrands;
 
     @Column(name = "year_range_start")
     private Short yearRangeStart;
@@ -111,19 +110,19 @@ public class Preference {
         this.passengers = passengers;
     }
 
-    public String[] getPreferredBodyTypes() {
+    public List<String> getPreferredBodyTypes() {
         return preferredBodyTypes;
     }
 
-    public void setPreferredBodyTypes(String[] preferredBodyTypes) {
+    public void setPreferredBodyTypes(List<String> preferredBodyTypes) {
         this.preferredBodyTypes = preferredBodyTypes;
     }
 
-    public String[] getPreferredBrands() {
+    public List<String> getPreferredBrands() {
         return preferredBrands;
     }
 
-    public void setPreferredBrands(String[] preferredBrands) {
+    public void setPreferredBrands(List<String> preferredBrands) {
         this.preferredBrands = preferredBrands;
     }
 

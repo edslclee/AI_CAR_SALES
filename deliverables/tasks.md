@@ -18,7 +18,7 @@
 - [x] BE-3: 도메인 엔티티/리포지토리/서비스 뼈대 구현
   - DoD: JPA 엔티티 생성(users, preferences, cars, recommendations, favorites), Spring Data Repository 인터페이스, 서비스 인터페이스 초안, 단위 테스트 1건 이상
   - Deliverable: `src/main/java/.../domain/*.java`, `src/test/java/.../repository/*.java`
-- [ ] BE-4: 추천 API 초안 구현
+- [x] BE-4: 추천 API 초안 구현
   - DoD: `/api/v1/surveys`, `/api/v1/recommendations/{id}`, `/api/v1/favorites` 기본 흐름 구현, 추천 점수 계산 스텁, 통합 테스트 1건 이상 통과
   - Deliverable: `src/main/java/.../controller/*.java`, `src/test/java/.../controller/*.java`
 - [ ] BE-5: 관리자 CSV 업로드 파이프라인 초안
