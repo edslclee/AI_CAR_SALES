@@ -35,9 +35,9 @@ export default function BudgetStep({ data, errors, onChange }) {
         />
         {errors?.maxBudget && <span className="error-text">{errors.maxBudget}</span>}
       </div>
-      <div className="field-group">
-        <label>구매 방식</label>
-        <div className="checkbox-grid">
+      <fieldset className="field-group">
+        <legend>구매 방식</legend>
+        <div className="checkbox-grid" role="radiogroup" aria-label="구매 방식">
           {[
             { value: 'lease', label: '리스/렌트' },
             { value: 'finance', label: '할부/금융' },
@@ -62,7 +62,7 @@ export default function BudgetStep({ data, errors, onChange }) {
           })}
         </div>
         {errors?.purchaseType && <span className="error-text">{errors.purchaseType}</span>}
-      </div>
+      </fieldset>
     </div>
   );
 }
