@@ -8,6 +8,7 @@
 ./bootstrap/prompt_bundle.md
 ./frontend
 ./frontend/index.html
+./frontend/dist
 ./frontend/node_modules
 ./frontend/vite.config.js
 ./frontend/README.md
@@ -17,6 +18,7 @@
 ./frontend/package.json
 ./frontend/src
 ./docs
+./docs/maintenance_guide.md
 ./docs/admin
 ./docs/decisions
 ./docs/history

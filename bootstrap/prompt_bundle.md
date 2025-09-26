@@ -12,16 +12,16 @@
 - 한 번에 하나의 Task만 수행.
 
 ## 현재 상태
-- Backend: /health ✅ (200 OK)
+- Backend: /health ❌ (접속 불가)
 - DB: Postgres ✅ / Redis ✅
-- Web: vite dev ✅ (포트 5173 응답)
-- Last Checked: 2025-09-25 11:16 KST
+- Web: vite dev ❌ (포트 닫힘)
+- Last Checked: 2025-09-26 10:17 KST
 
 ## Active Task
-- Task ID: FE-1 – Vite + React 초기화
-- 목표: Vite + React 초기화
-- DoD(완료조건): Vite 프로젝트 생성, React Router 기본 구성, PWA(Service Worker, manifest) 설정, CI 빌드 통과
-- Deliverable: `package.json`, `src/main.tsx`, `public/manifest.json`
+- Task ID: FE-3: – 추천 결과 & 즐겨찾기 화면
+- 목표: 추천 결과 & 즐겨찾기 화면
+- DoD(완료조건): 추천 리스트, 비교표 선택, 즐겨찾기 토글 UI, API 연동 모듈, 테스트 1건 이상
+- Deliverable: `src/features/recommendations/*`, `src/features/favorites/*`
 - 승인 규칙: 완료 보고 후 승인 받고 다음 Task 이동
 
 
@@ -141,10 +141,10 @@
   - Deliverable: `src/main/java/.../admin/*.java`, `src/test/java/.../admin/*.java`
 
 ## Frontend
-- [ ] FE-1: Vite + React PWA 초기화
+- [x] FE-1: Vite + React PWA 초기화
   - DoD: Vite 프로젝트 생성, React Router 기본 구성, PWA(Service Worker, manifest) 설정, CI 빌드 통과
-  - Deliverable: `package.json`, `src/main.tsx`, `public/manifest.json`
-- [ ] FE-2: 온보딩 설문 UI 구현
+  - Deliverable: `package.json`, `src/main.jsx`, `public/manifest.webmanifest`
+- [x] FE-2: 온보딩 설문 UI 구현
   - DoD: 설문 단계별 폼 컴포넌트(예산, 용도, 선호 등) 구현, 유효성 검사, API 연동 스텁, 사용자 입력 상태 관리
   - Deliverable: `src/features/survey/*`, 스토리북/테스트 케이스(optional)
 - [ ] FE-3: 추천 결과 & 즐겨찾기 화면
@@ -233,28 +233,20 @@
 ---
 # FILE: bootstrap/git_status.txt
 
- M README.md
  M bootstrap/context.md
+ M bootstrap/git_status.txt
  M bootstrap/prompt_bundle.md
  M bootstrap/tree.txt
- M build.gradle
  M deliverables/tasks.md
  M docs/history/STATELOG.md
- M scripts/complete_task.sh
- M scripts/set_active_task.sh
- M src/main/java/com/aicarsales/app/repository/CarRepository.java
- M src/main/resources/application.yml
- M src/test/resources/application-test.yml
- M src/test/resources/schema-test.sql
-?? data/
-?? docs/admin/
-?? frontend/
-?? scripts/run_backend.sh
-?? scripts/seed_sample_cars.sh
-?? scripts/status.sh
-?? src/main/java/com/aicarsales/app/admin/
-?? src/main/resources/db/migration/V3__csv_upload_jobs.sql
-?? src/test/java/com/aicarsales/app/admin/
+ D frontend/dist/assets/index-BFEHjihe.js
+ D frontend/dist/assets/index-CTIeP6_u.css
+ M frontend/dist/index.html
+ M frontend/src/routes/Survey.jsx
+?? docs/maintenance_guide.md
+?? frontend/dist/assets/index-Ba2NlSf5.css
+?? frontend/dist/assets/index-CSNRrFX6.js
+?? frontend/src/features/
 
 
 ---
@@ -270,6 +262,7 @@
 ./bootstrap/prompt_bundle.md
 ./frontend
 ./frontend/index.html
+./frontend/dist
 ./frontend/node_modules
 ./frontend/vite.config.js
 ./frontend/README.md
@@ -279,6 +272,7 @@
 ./frontend/package.json
 ./frontend/src
 ./docs
+./docs/maintenance_guide.md
 ./docs/admin
 ./docs/decisions
 ./docs/history

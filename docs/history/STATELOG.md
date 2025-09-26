@@ -55,3 +55,15 @@
 - goal: Vite + React 초기화
 - note: manual update
 
+## 2025-09-26 10:40 KST
+- set-active: FE-1 → FE-2
+- title: 온보딩 설문 UI 구현
+- goal: 온보딩 설문 UI 구현
+- auto-filled: Goal/DoD/Deliverable from deliverables/tasks.md
+
+## 2025-09-26 11:02 KST
+- set-active: FE-2: → FE-3
+- title: 추천 결과 & 즐겨찾기 화면
+- goal: 추천 결과 & 즐겨찾기 화면
+- auto-filled: Goal/DoD/Deliverable from deliverables/tasks.md
+

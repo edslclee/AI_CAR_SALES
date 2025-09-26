@@ -26,10 +26,10 @@
   - Deliverable: `src/main/java/.../admin/*.java`, `src/test/java/.../admin/*.java`
 
 ## Frontend
-- [ ] FE-1: Vite + React PWA 초기화
+- [x] FE-1: Vite + React PWA 초기화
   - DoD: Vite 프로젝트 생성, React Router 기본 구성, PWA(Service Worker, manifest) 설정, CI 빌드 통과
-  - Deliverable: `package.json`, `src/main.tsx`, `public/manifest.json`
-- [ ] FE-2: 온보딩 설문 UI 구현
+  - Deliverable: `package.json`, `src/main.jsx`, `public/manifest.webmanifest`
+- [x] FE-2: 온보딩 설문 UI 구현
   - DoD: 설문 단계별 폼 컴포넌트(예산, 용도, 선호 등) 구현, 유효성 검사, API 연동 스텁, 사용자 입력 상태 관리
   - Deliverable: `src/features/survey/*`, 스토리북/테스트 케이스(optional)
 - [ ] FE-3: 추천 결과 & 즐겨찾기 화면
