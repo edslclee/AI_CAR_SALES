@@ -3,6 +3,7 @@ import Home from './routes/Home.jsx';
 import Survey from './routes/Survey.jsx';
 import Recommendations from './routes/Recommendations.jsx';
 import Favorites from './routes/Favorites.jsx';
+import AdminUpload from './routes/AdminUpload.jsx';
 import NotFound from './routes/NotFound.jsx';
 import './App.css';
 
@@ -16,6 +17,7 @@ export default function App() {
           <NavLink to="/survey">설문</NavLink>
           <NavLink to="/results">추천</NavLink>
           <NavLink to="/favorites">즐겨찾기</NavLink>
+          <NavLink to="/admin/upload">관리자</NavLink>
         </nav>
       </header>
 
@@ -25,6 +27,7 @@ export default function App() {
           <Route path="/survey" element={<Survey />} />
           <Route path="/results" element={<Recommendations />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/admin/upload" element={<AdminUpload />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

@@ -1,0 +1,47 @@
+name: Frontend CI
+
+on:
+  push:
+    paths:
+      - 'frontend/package.json'
+      - 'frontend/package-lock.json'
+      - 'frontend/src/**'
+      - 'frontend/vitest.config.ts'
+      - 'frontend/.eslintrc.cjs'
+      - 'frontend/.prettierrc.json'
+      - '.github/workflows/frontend-ci.yml'
+  pull_request:
+    paths:
+      - 'frontend/package.json'
+      - 'frontend/package-lock.json'
+      - 'frontend/src/**'
+      - 'frontend/vitest.config.ts'
+      - 'frontend/.eslintrc.cjs'
+      - 'frontend/.prettierrc.json'
+      - '.github/workflows/frontend-ci.yml'
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run Vitest
+        run: npm run test

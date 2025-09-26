@@ -15,13 +15,13 @@
 - Backend: /health ❌ (접속 불가)
 - DB: Postgres ✅ / Redis ✅
 - Web: vite dev ❌ (포트 닫힘)
-- Last Checked: 2025-09-26 10:17 KST
+- Last Checked: 2025-09-26 11:52 KST
 
 ## Active Task
-- Task ID: FE-3: – 추천 결과 & 즐겨찾기 화면
-- 목표: 추천 결과 & 즐겨찾기 화면
-- DoD(완료조건): 추천 리스트, 비교표 선택, 즐겨찾기 토글 UI, API 연동 모듈, 테스트 1건 이상
-- Deliverable: `src/features/recommendations/*`, `src/features/favorites/*`
+- Task ID: QA-2: – Frontend 테스트 및 린트 파이프라인
+- 목표: Frontend 테스트 및 린트 파이프라인
+- DoD(완료조건): Vitest/Testing Library 설정, ESLint/Prettier 구성, GitHub Actions 워크플로 추가, 주요 컴포넌트 테스트 1건 이상
+- Deliverable: `vitest.config.ts`, `.eslintrc.cjs`, `.github/workflows/frontend-ci.yml`
 - 승인 규칙: 완료 보고 후 승인 받고 다음 Task 이동
 
 
@@ -147,15 +147,19 @@
 - [x] FE-2: 온보딩 설문 UI 구현
   - DoD: 설문 단계별 폼 컴포넌트(예산, 용도, 선호 등) 구현, 유효성 검사, API 연동 스텁, 사용자 입력 상태 관리
   - Deliverable: `src/features/survey/*`, 스토리북/테스트 케이스(optional)
-- [ ] FE-3: 추천 결과 & 즐겨찾기 화면
+- [x] FE-3: 추천 결과 & 즐겨찾기 화면
   - DoD: 추천 리스트, 비교표 선택, 즐겨찾기 토글 UI, API 연동 모듈, 테스트 1건 이상
   - Deliverable: `src/features/recommendations/*`, `src/features/favorites/*`
-- [ ] FE-4: 관리자 CSV 업로드 화면
+- [x] FE-4: 관리자 CSV 업로드 화면
   - DoD: CSV 업로드 폼, 상태 표시(검증 중/완료/오류), 결과 로그 뷰어, 에러 핸들링, API 연동 스텁
   - Deliverable: `src/features/admin/upload/*`
+- [x] FE-5: 관리자 CSV 업로드 API 연동
+  - DoD: 백엔드 업로드/상태 조회 엔드포인트 호출, 응답/오류 핸들링, 프런트 상태 갱신, 통합 테스트(또는 목 확인)
+  - Deliverable: `src/features/admin/upload/adminUploadApi.js`, `src/features/admin/upload/useAdminUpload.js`
+
 
 ## QA / CI
-- [ ] QA-1: Backend 테스트 기반 구축
+- [x] QA-1: Backend 테스트 기반 구축
   - DoD: Testcontainers(Postgres/Redis) 연동, 통합 테스트 템플릿, GitHub Actions에서 테스트 실행 성공
   - Deliverable: `build.gradle` 테스트 설정, `.github/workflows/backend-ci.yml`
 - [ ] QA-2: Frontend 테스트 및 린트 파이프라인
@@ -166,10 +170,10 @@
 - [x] ADM-1: CSV 스키마 정의 및 샘플 데이터 작성
   - DoD: 관리자 업로드용 CSV 필드 목록/데이터 타입 문서화, 필수/선택 구분, 샘플 파일 2종(정상/에러) 작성
   - Deliverable: `docs/admin/csv_schema.md`, `data/samples/cars_valid.csv`, `data/samples/cars_invalid.csv`
-- [ ] ADM-2: CSV 검증 자동화 스크립트 초안
+- [x] ADM-2: CSV 검증 자동화 스크립트 초안
   - DoD: 업로드 전 사전 검증용 스크립트(`check_csv.py`) 작성, 필수 필드/데이터 타입/중복 검사를 포함, 샘플 데이터로 테스트 로그 확보
   - Deliverable: `tools/check_csv.py`, `logs/csv_validation.md`
-- [ ] ADM-3: 관리자 운영 가이드 작성
+- [x] ADM-3: 관리자 운영 가이드 작성
   - DoD: CSV 업로드 절차, 오류 대응 프로세스, 추천 결과 검수 체크리스트 포함한 운영 가이드 초안 작성
   - Deliverable: `docs/admin/operations_guide.md`
 
@@ -237,16 +241,25 @@
  M bootstrap/git_status.txt
  M bootstrap/prompt_bundle.md
  M bootstrap/tree.txt
+ M build.gradle
  M deliverables/tasks.md
  M docs/history/STATELOG.md
  D frontend/dist/assets/index-BFEHjihe.js
  D frontend/dist/assets/index-CTIeP6_u.css
  M frontend/dist/index.html
+ M frontend/src/App.jsx
  M frontend/src/routes/Survey.jsx
-?? docs/maintenance_guide.md
-?? frontend/dist/assets/index-Ba2NlSf5.css
-?? frontend/dist/assets/index-CSNRrFX6.js
-?? frontend/src/features/
+ M src/test/java/com/aicarsales/app/admin/AdminCsvUploadControllerTest.java
+ M src/test/java/com/aicarsales/app/controller/RecommendationFlowIntegrationTest.java
+ M src/test/resources/application-test.yml
+?? .github/
+?? docs/admin/operations_guide.md
+?? frontend/dist/assets/index-D7K64jJE.js
+?? frontend/dist/assets/index-bsT8IXXn.css
+?? frontend/src/features/admin/
+?? frontend/src/routes/AdminUpload.jsx
+?? src/test/java/com/aicarsales/app/support/
+?? tools/
 
 
 ---
@@ -254,6 +267,7 @@
 
 .
 ./tools
+./tools/check_csv.py
 ./bootstrap
 ./bootstrap/context.md
 ./bootstrap/git_status.txt
@@ -282,6 +296,7 @@
 ./deliverables/tasks.md
 ./logs
 ./logs/status_check.md
+./logs/csv_validation.md
 ./.gitignore
 ./scripts
 ./scripts/seed_sample_cars.sh
@@ -289,6 +304,8 @@
 ./scripts/set_active_task.sh
 ./scripts/run_backend.sh
 ./scripts/complete_task.sh
+./.github
+./.github/workflows
 ./build.gradle
 ./.gradle
 ./.gradle/vcs-1
@@ -309,6 +326,7 @@
 ./build/tmp
 ./build/reports
 ./.git
+./.git/ORIG_HEAD
 ./.git/config
 ./.git/objects
 ./.git/HEAD

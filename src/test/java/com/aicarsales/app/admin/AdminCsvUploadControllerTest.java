@@ -18,14 +18,13 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.test.web.servlet.MockMvc;
+import com.aicarsales.app.support.AbstractIntegrationTest;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@ActiveProfiles("test")
-class AdminCsvUploadControllerTest {
+class AdminCsvUploadControllerTest extends AbstractIntegrationTest {
 
     private static final String VALID_CSV = """
             oem_code,model_name,trim,price,body_type,fuel_type,efficiency,seats,drivetrain,release_year,features,media_assets

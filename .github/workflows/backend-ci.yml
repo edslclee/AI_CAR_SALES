@@ -1,0 +1,38 @@
+name: Backend CI
+
+on:
+  push:
+    paths:
+      - 'build.gradle'
+      - 'settings.gradle'
+      - 'src/**'
+      - '.github/workflows/backend-ci.yml'
+      - 'docs/**'
+  pull_request:
+    paths:
+      - 'build.gradle'
+      - 'settings.gradle'
+      - 'src/**'
+      - '.github/workflows/backend-ci.yml'
+      - 'docs/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.7'
+
+      - name: Run tests
+        run: gradle test

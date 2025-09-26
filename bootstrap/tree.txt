@@ -1,5 +1,6 @@
 .
 ./tools
+./tools/check_csv.py
 ./bootstrap
 ./bootstrap/context.md
 ./bootstrap/git_status.txt
@@ -28,6 +29,7 @@
 ./deliverables/tasks.md
 ./logs
 ./logs/status_check.md
+./logs/csv_validation.md
 ./.gitignore
 ./scripts
 ./scripts/seed_sample_cars.sh
@@ -35,6 +37,8 @@
 ./scripts/set_active_task.sh
 ./scripts/run_backend.sh
 ./scripts/complete_task.sh
+./.github
+./.github/workflows
 ./build.gradle
 ./.gradle
 ./.gradle/vcs-1
@@ -55,6 +59,7 @@
 ./build/tmp
 ./build/reports
 ./.git
+./.git/ORIG_HEAD
 ./.git/config
 ./.git/objects
 ./.git/HEAD
