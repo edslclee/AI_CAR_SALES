@@ -1,0 +1,11 @@
+oem_code,model_name,trim,price,body_type,fuel_type,efficiency,seats,drivetrain,release_year,features,media_assets
+HYUNDAI-IONIQ5,Ioniq 5,Long Range AWD,58500000,SUV,EV,5.2,5,AWD,2024,"{""safety"": {""adas"": true}, ""infotainment"": {""screens"": 2}}","{""images"": [""https://cdn.example.com/ioniq5/front.png"", ""https://cdn.example.com/ioniq5/rear.png""]}"
+KIA-EV6,EV6,GT-Line,63300000,Crossover,EV,4.8,5,AWD,2024,"{""battery"": 77.4, ""charging"": {""fast"": true}}","{""images"": [""https://cdn.example.com/ev6/hero.png""]}"
+HYUNDAI-SONATA,Sonata,Hybrid Inspiration,34900000,Sedan,Hybrid,18.8,5,FWD,2024,"{""comfort"": [""ventilated seats""], ""safety"": {""lane_keep"": true}}","{""images"": [], ""videos"": []}"
+KIA-SORENTO,Sorento,Diesel Prestige,38500000,SUV,Diesel,13.6,7,AWD,2023,"{""drive_modes"": 4, ""towing"": 2000}","{""images"": []}"
+GENESIS-GV80,GV80,3.5T AWD,76800000,SUV,Gasoline,8.6,5,AWD,2024,"{""luxury"": {""seats"": ""Nappa""}}","{""images"": []}"
+TESLA-MODEL3,Model 3,Long Range,56990000,Sedan,EV,6.1,5,AWD,2024,"{""battery"": 82, ""autopilot"": true}","{""images"": []}"
+BMW-320I,320i,M Sport,62900000,Sedan,Gasoline,12.4,5,RWD,2024,"{""packages"": {""comfort"": true, ""driver_assist"": true}}","{""images"": []}"
+AUDI-Q4E,Q4 e-tron,40 quattro,69500000,SUV,EV,5.6,5,AWD,2023,"{""battery"": 82, ""charging"": {""dc_max"": 125}}","{""images"": []}"
+VOLVO-XC60,XC60,Recharge Plus,71900000,SUV,Plug-in Hybrid,9.6,5,AWD,2024,"{""safety"": [""Pilot Assist"", ""BLIS""]}","{""images"": []}"
+KIA-RAYEV,Ray EV,Light,27900000,Hatchback,EV,6.7,4,FWD,2024,"{""city"": true, ""range"": 205}","{""images"": []}"

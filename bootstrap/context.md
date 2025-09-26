@@ -5,15 +5,15 @@
 - 한 번에 하나의 Task만 수행.
 
 ## 현재 상태
-- Backend: /health 200 ?
-- DB: docker compose up ?
-- Web: vite dev ?
+- Backend: /health ✅ (200 OK)
+- DB: Postgres ✅ / Redis ✅
+- Web: vite dev ✅ (포트 5173 응답)
+- Last Checked: 2025-09-25 11:16 KST
 
 ## Active Task
-- Task ID: M0-1 – 로컬 인프라 기동
-- 목표: Docker Compose로 PostgreSQL(+Redis) 컨테이너 기동 및 연결 확인
-- DoD(완료조건):
-  1) `docker ps`에서 `postgres`와 `redis` 컨테이너가 Up
-  2) `pg_isready -h localhost -p 5432 -U app` 가 “accepting connections”
-- 산출물: 없음 (환경 기동 확인 로그)
-- 승인 규칙: DoD 충족 후 “M0-1 완료” 보고 → 사용자 승인 후 Backend Task 진행
+- Task ID: FE-1 – Vite + React 초기화
+- 목표: Vite + React 초기화
+- DoD(완료조건): Vite 프로젝트 생성, React Router 기본 구성, PWA(Service Worker, manifest) 설정, CI 빌드 통과
+- Deliverable: `package.json`, `src/main.tsx`, `public/manifest.json`
+- 승인 규칙: 완료 보고 후 승인 받고 다음 Task 이동
+

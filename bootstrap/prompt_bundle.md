@@ -12,18 +12,19 @@
 - 한 번에 하나의 Task만 수행.
 
 ## 현재 상태
-- Backend: /health 200 ?
-- DB: docker compose up ?
-- Web: vite dev ?
+- Backend: /health ✅ (200 OK)
+- DB: Postgres ✅ / Redis ✅
+- Web: vite dev ✅ (포트 5173 응답)
+- Last Checked: 2025-09-25 11:16 KST
 
 ## Active Task
-- Task ID: M0-1 – 로컬 인프라 기동
-- 목표: Docker Compose로 PostgreSQL(+Redis) 컨테이너 기동 및 연결 확인
-- DoD(완료조건):
-  1) `docker ps`에서 `postgres`와 `redis` 컨테이너가 Up
-  2) `pg_isready -h localhost -p 5432 -U app` 가 “accepting connections”
-- 산출물: 없음 (환경 기동 확인 로그)
-- 승인 규칙: DoD 충족 후 “M0-1 완료” 보고 → 사용자 승인 후 Backend Task 진행
+- Task ID: FE-1 – Vite + React 초기화
+- 목표: Vite + React 초기화
+- DoD(완료조건): Vite 프로젝트 생성, React Router 기본 구성, PWA(Service Worker, manifest) 설정, CI 빌드 통과
+- Deliverable: `package.json`, `src/main.tsx`, `public/manifest.json`
+- 승인 규칙: 완료 보고 후 승인 받고 다음 Task 이동
+
+
 
 ---
 # FILE: deliverables/prd.md
@@ -115,27 +116,27 @@
 # 작업 체크리스트 (자동차 추천 시스템)
 
 ## Infra
-- [ ] INF-1: Docker Compose 골격 구성
+- [x] INF-1: Docker Compose 골격 구성
   - DoD: `docker-compose.yml`에 app/postgres/redis 서비스 정의, 환경 변수 템플릿(`.env.example`) 준비, README에 기동 명령 문서화
   - Deliverable: `docker-compose.yml`, `.env.example`, `docs/local_setup.md`
-- [ ] INF-2: 로컬 인프라 기동 검증
+- [x] INF-2: 로컬 인프라 기동 검증
   - DoD: `docker compose up` 이후 Postgres/Redis 컨테이너 헬스 체크 통과, 애플리케이션 컨테이너에서 `/health` 200 응답 확인, 확인 로그 캡처
   - Deliverable: `docs/local_setup.md` 업데이트(트러블슈팅 포함), 검증 로그(`logs/infra_bootstrap.md`)
 
 ## Backend
-- [ ] BE-1: Spring Boot 3 프로젝트 초기화
+- [x] BE-1: Spring Boot 3 프로젝트 초기화
   - DoD: Gradle 기반 프로젝트 생성, 기본 패키지 구조 정의, 헬스체크 컨트롤러(`/health`) 200 응답, Flyway 의존성 포함
   - Deliverable: `build.gradle`, `src/main/java/.../Application.java`, `src/main/resources/application.yml`
-- [ ] BE-2: 기본 데이터 모델 & Flyway 마이그레이션 추가
+- [x] BE-2: 기본 데이터 모델 & Flyway 마이그레이션 추가
   - DoD: users/preferences/cars 기본 테이블 스키마 정의, Flyway V1 스크립트 작성 및 로컬 적용 검증
   - Deliverable: `src/main/resources/db/migration/V1__init.sql`, 적용 결과 로그
-- [ ] BE-3: 도메인 엔티티/리포지토리/서비스 뼈대 구현
+- [x] BE-3: 도메인 엔티티/리포지토리/서비스 뼈대 구현
   - DoD: JPA 엔티티 생성(users, preferences, cars, recommendations, favorites), Spring Data Repository 인터페이스, 서비스 인터페이스 초안, 단위 테스트 1건 이상
   - Deliverable: `src/main/java/.../domain/*.java`, `src/test/java/.../repository/*.java`
-- [ ] BE-4: 추천 API 초안 구현
+- [x] BE-4: 추천 API 초안 구현
   - DoD: `/api/v1/surveys`, `/api/v1/recommendations/{id}`, `/api/v1/favorites` 기본 흐름 구현, 추천 점수 계산 스텁, 통합 테스트 1건 이상 통과
   - Deliverable: `src/main/java/.../controller/*.java`, `src/test/java/.../controller/*.java`
-- [ ] BE-5: 관리자 CSV 업로드 파이프라인 초안
+- [x] BE-5: 관리자 CSV 업로드 파이프라인 초안
   - DoD: Multipart 업로드 엔드포인트, CSV 파서 유효성 검증, 비동기 큐 스텁, 실패/성공 응답 정의, 단위 테스트 포함
   - Deliverable: `src/main/java/.../admin/*.java`, `src/test/java/.../admin/*.java`
 
@@ -162,7 +163,7 @@
   - Deliverable: `vitest.config.ts`, `.eslintrc.cjs`, `.github/workflows/frontend-ci.yml`
 
 ## Admin
-- [ ] ADM-1: CSV 스키마 정의 및 샘플 데이터 작성
+- [x] ADM-1: CSV 스키마 정의 및 샘플 데이터 작성
   - DoD: 관리자 업로드용 CSV 필드 목록/데이터 타입 문서화, 필수/선택 구분, 샘플 파일 2종(정상/에러) 작성
   - Deliverable: `docs/admin/csv_schema.md`, `data/samples/cars_valid.csv`, `data/samples/cars_invalid.csv`
 - [ ] ADM-2: CSV 검증 자동화 스크립트 초안
@@ -232,27 +233,107 @@
 ---
 # FILE: bootstrap/git_status.txt
 
+ M README.md
+ M bootstrap/context.md
+ M bootstrap/prompt_bundle.md
+ M bootstrap/tree.txt
+ M build.gradle
+ M deliverables/tasks.md
+ M docs/history/STATELOG.md
+ M scripts/complete_task.sh
+ M scripts/set_active_task.sh
+ M src/main/java/com/aicarsales/app/repository/CarRepository.java
+ M src/main/resources/application.yml
+ M src/test/resources/application-test.yml
+ M src/test/resources/schema-test.sql
+?? data/
+?? docs/admin/
+?? frontend/
+?? scripts/run_backend.sh
+?? scripts/seed_sample_cars.sh
+?? scripts/status.sh
+?? src/main/java/com/aicarsales/app/admin/
+?? src/main/resources/db/migration/V3__csv_upload_jobs.sql
+?? src/test/java/com/aicarsales/app/admin/
 
 
 ---
 # FILE: bootstrap/tree.txt
 
 .
+./tools
 ./bootstrap
 ./bootstrap/context.md
 ./bootstrap/git_status.txt
 ./bootstrap/rehydrate.sh
 ./bootstrap/tree.txt
 ./bootstrap/prompt_bundle.md
+./frontend
+./frontend/index.html
+./frontend/node_modules
+./frontend/vite.config.js
+./frontend/README.md
+./frontend/public
+./frontend/.gitignore
+./frontend/package-lock.json
+./frontend/package.json
+./frontend/src
+./docs
+./docs/admin
+./docs/decisions
+./docs/history
+./README.md
 ./deliverables
 ./deliverables/prd.md
 ./deliverables/tasks.md
+./logs
+./logs/status_check.md
+./.gitignore
+./scripts
+./scripts/seed_sample_cars.sh
+./scripts/status.sh
+./scripts/set_active_task.sh
+./scripts/run_backend.sh
+./scripts/complete_task.sh
+./build.gradle
+./.gradle
+./.gradle/vcs-1
+./.gradle/8.7
+./.gradle/buildOutputCleanup
+./.gradle/9.0.0
 ./rules
 ./rules/3_task_exec_rules.md
 ./rules/2_task_gen_rules.md
 ./rules/1_prd_rules.md
+./docker-compose.yml
+./build
+./build/generated
+./build/classes
+./build/resolvedMainClassName
+./build/resources
+./build/test-results
+./build/tmp
+./build/reports
+./.git
+./.git/config
+./.git/objects
+./.git/HEAD
+./.git/info
+./.git/logs
+./.git/description
+./.git/hooks
+./.git/refs
+./.git/index
+./.git/COMMIT_EDITMSG
+./.git/FETCH_HEAD
 ./.vscode
 ./.vscode/task.json
+./settings.gradle
+./data
+./data/samples
+./src
+./src/test
+./src/main
 
 # === BOOTSTRAP BUNDLE END ===
 

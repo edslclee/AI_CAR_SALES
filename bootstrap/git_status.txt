@@ -1,0 +1,22 @@
+ M README.md
+ M bootstrap/context.md
+ M bootstrap/prompt_bundle.md
+ M bootstrap/tree.txt
+ M build.gradle
+ M deliverables/tasks.md
+ M docs/history/STATELOG.md
+ M scripts/complete_task.sh
+ M scripts/set_active_task.sh
+ M src/main/java/com/aicarsales/app/repository/CarRepository.java
+ M src/main/resources/application.yml
+ M src/test/resources/application-test.yml
+ M src/test/resources/schema-test.sql
+?? data/
+?? docs/admin/
+?? frontend/
+?? scripts/run_backend.sh
+?? scripts/seed_sample_cars.sh
+?? scripts/status.sh
+?? src/main/java/com/aicarsales/app/admin/
+?? src/main/resources/db/migration/V3__csv_upload_jobs.sql
+?? src/test/java/com/aicarsales/app/admin/

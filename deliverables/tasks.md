@@ -21,7 +21,7 @@
 - [x] BE-4: 추천 API 초안 구현
   - DoD: `/api/v1/surveys`, `/api/v1/recommendations/{id}`, `/api/v1/favorites` 기본 흐름 구현, 추천 점수 계산 스텁, 통합 테스트 1건 이상 통과
   - Deliverable: `src/main/java/.../controller/*.java`, `src/test/java/.../controller/*.java`
-- [ ] BE-5: 관리자 CSV 업로드 파이프라인 초안
+- [x] BE-5: 관리자 CSV 업로드 파이프라인 초안
   - DoD: Multipart 업로드 엔드포인트, CSV 파서 유효성 검증, 비동기 큐 스텁, 실패/성공 응답 정의, 단위 테스트 포함
   - Deliverable: `src/main/java/.../admin/*.java`, `src/test/java/.../admin/*.java`
 
@@ -48,7 +48,7 @@
   - Deliverable: `vitest.config.ts`, `.eslintrc.cjs`, `.github/workflows/frontend-ci.yml`
 
 ## Admin
-- [ ] ADM-1: CSV 스키마 정의 및 샘플 데이터 작성
+- [x] ADM-1: CSV 스키마 정의 및 샘플 데이터 작성
   - DoD: 관리자 업로드용 CSV 필드 목록/데이터 타입 문서화, 필수/선택 구분, 샘플 파일 2종(정상/에러) 작성
   - Deliverable: `docs/admin/csv_schema.md`, `data/samples/cars_valid.csv`, `data/samples/cars_invalid.csv`
 - [ ] ADM-2: CSV 검증 자동화 스크립트 초안

@@ -1,0 +1,3 @@
+oem_code,model_name,trim,price,body_type,fuel_type,efficiency,seats,drivetrain,release_year,features,media_assets
+HYUNDAI-IONIQ5,,Long Range AWD,,SUV,EV,not-a-number,five,AWD,2024,{bad-json,[]
+KIA-EV6,EV6,GT-Line,63300000,Crossover,EV,,5,AWD,,{},not-json
