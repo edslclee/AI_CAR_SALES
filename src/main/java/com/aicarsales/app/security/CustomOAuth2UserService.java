@@ -6,6 +6,7 @@ import com.aicarsales.app.repository.UserRepository;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -26,6 +27,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     private final PasswordEncoder passwordEncoder;
     private final OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate;
 
+    @Autowired
     public CustomOAuth2UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this(userRepository, passwordEncoder, new DefaultOAuth2UserService());
     }
