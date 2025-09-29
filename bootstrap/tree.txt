@@ -11,12 +11,17 @@
 ./frontend/index.html
 ./frontend/dist
 ./frontend/node_modules
+./frontend/.eslintrc.cjs
 ./frontend/vite.config.js
+./frontend/.prettierignore
 ./frontend/README.md
 ./frontend/public
+./frontend/.prettierrc.json
 ./frontend/.gitignore
 ./frontend/package-lock.json
 ./frontend/package.json
+./frontend/.eslintignore
+./frontend/vitest.config.ts
 ./frontend/src
 ./docs
 ./docs/maintenance_guide.md
@@ -27,6 +32,8 @@
 ./deliverables
 ./deliverables/prd.md
 ./deliverables/tasks.md
+./deliverables/tasks_v2.md
+./deliverables/prd_v2.md
 ./logs
 ./logs/status_check.md
 ./logs/csv_validation.md

@@ -5,15 +5,15 @@
 - 한 번에 하나의 Task만 수행.
 
 ## 현재 상태
-- Backend: /health ❌ (접속 불가)
+- Backend: /health ✅ (200 OK)
 - DB: Postgres ✅ / Redis ✅
 - Web: vite dev ❌ (포트 닫힘)
-- Last Checked: 2025-09-26 11:52 KST
+- Last Checked: 2025-09-26 16:59 KST
 
 ## Active Task
-- Task ID: QA-2: – Frontend 테스트 및 린트 파이프라인
-- 목표: Frontend 테스트 및 린트 파이프라인
-- DoD(완료조건): Vitest/Testing Library 설정, ESLint/Prettier 구성, GitHub Actions 워크플로 추가, 주요 컴포넌트 테스트 1건 이상
-- Deliverable: `vitest.config.ts`, `.eslintrc.cjs`, `.github/workflows/frontend-ci.yml`
+- Task ID: BE-6: – 구글 OAuth2 로그인 연동
+- 목표: 구글 OAuth2 로그인 연동
+- DoD(완료조건): OAuth2 클라이언트 등록, 토큰 교환 플로우, 통합 테스트
+- Deliverable: `src/main/java/.../security/*`, `docs/auth_setup.md`
 - 승인 규칙: 완료 보고 후 승인 받고 다음 Task 이동
 

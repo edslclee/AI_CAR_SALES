@@ -1,0 +1,8 @@
+ALTER TABLE users
+    ADD COLUMN auth_provider VARCHAR(32) NOT NULL DEFAULT 'LOCAL';
+
+ALTER TABLE users
+    ADD COLUMN provider_id VARCHAR(128);
+
+ALTER TABLE users
+    ADD COLUMN picture_url TEXT;

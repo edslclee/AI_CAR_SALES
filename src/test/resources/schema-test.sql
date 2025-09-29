@@ -4,6 +4,9 @@ CREATE TABLE IF NOT EXISTS users (
     password_hash VARCHAR(255) NOT NULL,
     name VARCHAR(100),
     role VARCHAR(50) NOT NULL,
+    auth_provider VARCHAR(32) NOT NULL DEFAULT 'LOCAL',
+    provider_id VARCHAR(128),
+    picture_url TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 

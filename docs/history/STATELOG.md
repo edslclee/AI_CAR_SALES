@@ -141,3 +141,97 @@
 - task-complete: QA-2
 - notes: Added Vitest config, ESLint/Prettier setup, frontend CI workflow, component test; dependency install pending due to offline environment
 
+## 2025-09-26 17:38 KST
+- set-active: QA-2: → BE-6
+- title: 카카오/구글 OAuth2 로그인 연동
+- goal: 카카오/구글 OAuth2 로그인 연동
+- source: tasks_v2.md
+
+## 2025-09-26 17:51 KST
+- set-active: BE-6: → BE-6
+- title: 카카오/구글 OAuth2 로그인 연동
+- goal: 카카오/구글 OAuth2 로그인 연동
+- parsed: goal="카카오/구글 OAuth2 로그인 연동" dod="" deliver=""
+- source: tasks_v2.md
+
+## 2025-09-26 17:54 KST
+- set-active: BE-6: → BE-6
+- title: 카카오/구글 OAuth2 로그인 연동
+- goal: 카카오/구글 OAuth2 로그인 연동
+- source: tasks_v2.md
+- parsed: goal="카카오/구글 OAuth2 로그인 연동" dod="" deliver=""
+
+## 2025-09-26 17:56 KST
+- set-active: BE-6: → BE-6
+- title: 카카오/구글 OAuth2 로그인 연동
+- goal: 카카오/구글 OAuth2 로그인 연동
+- source: tasks_v2.md
+- parsed: goal="카카오/구글 OAuth2 로그인 연동" dod="" deliver=""
+
+## 2025-09-26 18:04 KST
+- set-active: BE-6: → BE-6
+- title: 구글 OAuth2 로그인 연동
+- goal: 구글 OAuth2 로그인 연동
+- parsed: goal="구글 OAuth2 로그인 연동" dod="" deliver=""
+- source: tasks_v2.md
+
+## 2025-09-26 18:08 KST
+- set-active: BE-6: → BE-6
+- title: 구글 OAuth2 로그인 연동
+- goal: 구글 OAuth2 로그인 연동
+- parsed: goal="구글 OAuth2 로그인 연동" dod="" deliver=""
+- source: tasks_v2.md
+
+## 2025-09-26 18:11 KST
+- set-active: BE-6: → BE-6
+- title: 구글 OAuth2 로그인 연동
+- goal: 구글 OAuth2 로그인 연동
+- parsed: goal="구글 OAuth2 로그인 연동" dod="" deliver=""
+- source: tasks_v2.md
+
+## 2025-09-26 18:12 KST
+- set-active: BE-6: → BE-6
+- title: 구글 OAuth2 로그인 연동
+- goal: 구글 OAuth2 로그인 연동
+- parsed: goal="구글 OAuth2 로그인 연동" dod="" deliver=""
+- source: tasks_v2.md
+
+## 2025-09-26 18:15 KST
+- set-active: BE-6: → BE-6
+- title: 구글 OAuth2 로그인 연동
+- goal: 구글 OAuth2 로그인 연동
+- parsed: goal="구글 OAuth2 로그인 연동" dod="" deliver=""
+- source: tasks_v2.md
+
+## 2025-09-26 18:15 KST
+- set-active: BE-6: → BE-6
+- title: 구글 OAuth2 로그인 연동
+- goal: 구글 OAuth2 로그인 연동
+- parsed: goal="구글 OAuth2 로그인 연동" dod="" deliver=""
+- source: tasks_v2.md
+
+## 2025-09-26 18:20 KST
+- set-active: BE-6: → BE-6
+- title: 구글 OAuth2 로그인 연동
+- goal: 구글 OAuth2 로그인 연동
+- parsed: goal="구글 OAuth2 로그인 연동" dod="" deliver=""
+- source: tasks_v2.md
+
+## 2025-09-26 18:31 KST
+- set-active: BE-6: → BE-6
+- title: 구글 OAuth2 로그인 연동
+- goal: 구글 OAuth2 로그인 연동
+- parsed: goal="구글 OAuth2 로그인 연동" dod="OAuth2 클라이언트 등록, 토큰 교환 플로우, 통합 테스트" deliver="`src/main/java/.../security/*`, `docs/auth_setup.md`"
+- source: tasks_v2.md
+
+## 2025-09-26 18:32 KST
+- set-active: BE-6: → BE-6
+- title: 구글 OAuth2 로그인 연동
+- goal: 구글 OAuth2 로그인 연동
+- parsed: goal="구글 OAuth2 로그인 연동" dod="OAuth2 클라이언트 등록, 토큰 교환 플로우, 통합 테스트" deliver="`src/main/java/.../security/*`, `docs/auth_setup.md`"
+- source: tasks_v2.md
+
+## 2025-09-29 09:15 KST
+- complete: BE-6
+- source: /Users/cheollee/Desktop/springboot/AI_CAR_SALES/deliverables/tasks_v2.md
+

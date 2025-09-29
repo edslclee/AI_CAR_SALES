@@ -1,10 +1,11 @@
-# === BOOTSTRAP BUNDLE START ===
-아래 파일들을 읽고 Active Task 하나만 수행.
-
+# Prompt Bundle (rehydrated)
+- Generated: 2025-09-26 18:38 KST
+- Workspace: AI_CAR_SALES
 
 ---
-# FILE: bootstrap/context.md
 
+## 1) Active Context (bootstrap/context.md)
+```md
 # Context (AI_SPRING_CAR)
 
 ## 규칙
@@ -12,340 +13,227 @@
 - 한 번에 하나의 Task만 수행.
 
 ## 현재 상태
-- Backend: /health ❌ (접속 불가)
+- Backend: /health ✅ (200 OK)
 - DB: Postgres ✅ / Redis ✅
 - Web: vite dev ❌ (포트 닫힘)
-- Last Checked: 2025-09-26 11:52 KST
+- Last Checked: 2025-09-26 16:59 KST
 
 ## Active Task
-- Task ID: QA-2: – Frontend 테스트 및 린트 파이프라인
-- 목표: Frontend 테스트 및 린트 파이프라인
-- DoD(완료조건): Vitest/Testing Library 설정, ESLint/Prettier 구성, GitHub Actions 워크플로 추가, 주요 컴포넌트 테스트 1건 이상
-- Deliverable: `vitest.config.ts`, `.eslintrc.cjs`, `.github/workflows/frontend-ci.yml`
+- Task ID: BE-6: – 구글 OAuth2 로그인 연동
+- 목표: 구글 OAuth2 로그인 연동
+- DoD(완료조건): OAuth2 클라이언트 등록, 토큰 교환 플로우, 통합 테스트
+- Deliverable: `src/main/java/.../security/*`, `docs/auth_setup.md`
 - 승인 규칙: 완료 보고 후 승인 받고 다음 Task 이동
+```
 
+---
+
+## 2) Product Requirements (PRD) — prd_v2.md
+```md
+# 제품 요구사항 문서 (PRD v2) — 자동차 추천 시스템
+
+## 0. 배경 & 목표
+- 배경: MVP 릴리즈 후 초기 사용자 피드백 및 운영 결과를 반영
+- 목표: 사용자 리텐션 30% 이상, 추천 클릭률 40% 달성, 운영 효율성 개선
+
+---
+
+## 1. 사용자 피드백 요약
+- [ ] 설문 과정 단축 요청
+- [ ] 추천 이유(Explainability) 노출 필요
+- [ ] CSV 업로드 에러 리포트 가독성 개선
+- [ ] 앱 설치 요구(모바일 접근성)
+
+---
+
+## 2. 범위 (포함 / 제외)
+- 포함:
+  - 소셜 로그인 (카카오/구글)
+  - 추천 결과 근거 API
+  - 개인화 추천
+  - 관리자 CSV 업로드 개선
+  - 외부 차량 데이터 API PoC
+- 제외:
+  - 결제/계약 플로우
+  - 다국어 지원
+  - 네이티브 앱 정식 출시
+
+---
+
+## 3. UX 개선
+- 설문 단계 통합 (5 → 3)
+- 추천 이유 팝업 추가
+- 유지비/연비 비교 차트
+- 관리자 업로드 오류 리포트 다운로드, 업로드 이력 조회
+
+---
+
+## 4. API 설계 (초안)
+- `GET /api/v2/recommendations/{id}` → explanations 필드 추가
+- `POST /api/v2/favorites` → 메모 확장
+- `POST /api/v2/admin/cars/upload` → error_report_url 반환
+- `GET /api/v2/admin/cars/history`
+- `GET /api/v2/external/cars/search` (PoC)
+
+---
+
+## 5. 데이터 모델 확장
+- recommendations.explanations (JSON 배열)
+- favorites.note 확장
+- csv_upload_jobs.error_report_path
+- external_api_logs 테이블 추가
+
+---
+
+## 6. 아키텍처 확장
+- 외부 API 연동 모듈
+- Explainability decorator 패턴
+- Redis 캐시 확장
+- CI/CD: staging 외부 API 테스트 분리
+
+---
+
+## 7. 비기능 요구사항
+- 응답 시간: 1초 이내 캐싱 응답
+- 가용성: 99.7%
+- 보안: 외부 API 키 Vault 관리
+- 확장성: ML 모델 교체 용이성 확보
+
+---
+
+## 8. 테스트 전략
+- 단위: 추천 이유 생성, 외부 API 파서
+- 통합: 업로드 → 오류 리포트 생성
+- E2E: 소셜 로그인 → 설문 → 추천 → 이유 팝업
+- 비기능: 부하/장애 fallback
+
+---
+
+## 9. 릴리즈 계획
+- M3: 소셜 로그인, 추천 이유, 업로드 개선
+- M4: 개인화 추천, 외부 API PoC
+- M5: 베타 테스트 → 정식 v2 론칭
+```
+
+---
+
+## 3) Tasks Checklist — tasks_v2.md
+```md
+# 작업 체크리스트 (PRD v2 — 자동차 추천 시스템)
+
+---
+
+## M3 (소셜 로그인, 추천 이유, 업로드 개선)
+
+- [ ] BE-6: 구글 OAuth2 로그인 연동
+  - DoD: OAuth2 클라이언트 등록, 토큰 교환 플로우, 통합 테스트
+  - Deliverable: `src/main/java/.../security/*`, `docs/auth_setup.md`
+
+- [ ] BE-7: 추천 결과 근거(Explainability) 필드 추가
+  - DoD: recommendations.explanations JSON 필드 저장/조회
+  - Deliverable: `src/main/java/.../recommendations/*`, DB 마이그레이션
+
+- [ ] FE-5: 추천 결과 이유 팝업 UI
+  - DoD: 리스트에서 “추천 이유” 버튼 → 팝업/툴팁 표시
+  - Deliverable: `src/features/recommendations/ExplainPopup.tsx`
+
+- [ ] ADM-4: CSV 업로드 오류 리포트 다운로드
+  - DoD: 업로드 결과 → downloadable error_report_url 제공
+  - Deliverable: `src/main/java/.../admin/*`, `logs/csv_reports/*`
+
+---
+
+## M4 (개인화 추천, 외부 API PoC)
+
+- [ ] BE-8: 사용자 히스토리 기반 개인화 추천
+  - DoD: favorites/recommendations 이력 기반 가중치 계산
+  - Deliverable: `src/main/java/.../personalization/*`
+
+- [ ] BE-9: 외부 차량 데이터 API 연동 PoC
+  - DoD: 제휴 API 호출, 응답 파싱, 캐싱
+  - Deliverable: `src/main/java/.../external/*`, `docs/external_api.md`
+
+- [ ] FE-6: 외부 API 검색 UI (PoC)
+  - DoD: 검색 폼 + 결과 리스트, API 연동
+  - Deliverable: `src/features/external/Search.tsx`
+
+- [ ] QA-3: 외부 API 장애 fallback 시나리오 테스트
+  - DoD: 장애 시 캐시 응답 반환 확인
+  - Deliverable: `src/test/java/.../external/*`
+
+---
+
+## M5 (베타 테스트, 정식 v2 론칭)
+
+- [ ] OPS-1: 성능 튜닝 및 부하 테스트
+  - DoD: 200 rps 부하 테스트 통과, 응답시간 < 1s
+  - Deliverable: `logs/performance_tests.md`
+
+- [ ] SEC-1: API 키 Vault 관리 적용
+  - DoD: 외부 API 키 환경변수 대신 Vault 연동
+  - Deliverable: `docs/security/vault_setup.md`
+
+- [ ] QA-4: E2E 테스트 시나리오 확장
+  - DoD: 소셜 로그인 → 설문 → 추천 이유 → 즐겨찾기 플로우 자동화
+  - Deliverable: `cypress/e2e/v2_flows.cy.ts`
+
+- [ ] DOC-1: 관리자 운영 가이드 v2 업데이트
+  - DoD: 업로드 개선, 오류 리포트, 외부 API PoC 포함
+  - Deliverable: `docs/admin/operations_v2.md`
+```
 
 
 ---
-# FILE: deliverables/prd.md
 
-# PRD: 자동차 추천 시스템 (MVP)
+## 4) State Log (tail)
+```md
 
-## 0. 사전 가정 & 미확정 항목
-- 대상 시장/국가: 대한민국, 통화 KRW, 언어 한국어, 거리 km, 연비 km/L 기준
-- 초기 출시 범위: Web/PWA (모바일 반응형 웹 포함), 앱 스토어 출시는 이후 단계로 미포함
-- 추천 기준 가중치(초기값): 예산 적합도 40%, 사용 용도 적합도 30%, 선호 옵션 적합도 20%, 연식/주행거리 조건 10%
-- 데이터 확보 경로: 내부 관리자 CSV 업로드 + 향후 외부 제휴사 연동(외부 API 연동은 범위 외)
-- 로그인 방식: 이메일/비밀번호 + 소셜 로그인(카카오) 1순위, 소셜 미확정 → 2차 릴리즈 후보
-- 개인정보 보관 정책: 최소 3년 보관, 파기 요청 시 즉시 삭제, 암호화 저장(비밀번호 Bcrypt, 민감정보 AES)
+## 2025-09-26 18:11 KST
+- set-active: BE-6: → BE-6
+- title: 구글 OAuth2 로그인 연동
+- goal: 구글 OAuth2 로그인 연동
+- parsed: goal="구글 OAuth2 로그인 연동" dod="" deliver=""
+- source: tasks_v2.md
 
-## 1. 개요 / 비전 / 목표
-- 비전: 개인 맞춤형 자동차 추천을 통해 초기 구매 리서치를 단축하고 신뢰있는 의사결정을 돕는다.
-- 비즈니스 목표: MVP 출시 3개월 내 월간 활성 사용자 1만 명 확보, 추천 리스트 클릭률 30% 이상, 즐겨찾기 전환율 15% 달성.
-- 제품 목표: 5분 이하 설문 완료, 맞춤형 추천 5개 이상 제공, 비교표/즐겨찾기로 재방문 동기 부여.
+## 2025-09-26 18:12 KST
+- set-active: BE-6: → BE-6
+- title: 구글 OAuth2 로그인 연동
+- goal: 구글 OAuth2 로그인 연동
+- parsed: goal="구글 OAuth2 로그인 연동" dod="" deliver=""
+- source: tasks_v2.md
 
-## 2. 페르소나 & 시나리오
-- **페르소나 A: 신차/중고 경계 고객**
-  - 30대 직장인, 첫 가족용 차량 검색. 예산 3천만 원, SUV 선호.
-  - 시나리오: 설문 입력 → 추천 리스트에서 5대 확인 → 비교표로 연비/크기 비교 → 즐겨찾기 저장 → 영업사 컨택.
-- **페르소나 B: 중고차 업그레이드 수요**
-  - 40대 자영업자, 현재 세단 보유, 유지비 절감이 목표.
-  - 시나리오: 기존 차량 주행거리/연식을 입력 → 예산/연비 필터 → 추천 결과 공유 → CSV 내보내기 요청.
-- **페르소나 C: 관리자(내부)**
-  - 제조사 제휴 담당자. 월 1회 최신 카탈로그 CSV 업로드, 차량 등록/수정.
+## 2025-09-26 18:15 KST
+- set-active: BE-6: → BE-6
+- title: 구글 OAuth2 로그인 연동
+- goal: 구글 OAuth2 로그인 연동
+- parsed: goal="구글 OAuth2 로그인 연동" dod="" deliver=""
+- source: tasks_v2.md
 
-## 3. 범위 (포함 / 제외)
-- **포함**: 설문 기반 추천 로직, 추천 리스트/비교표/즐겨찾기, 관리자 CSV 업로드, 기본 이메일 회원 가입, 추천 결과 저장.
-- **제외**: 실시간 재고 연동, 결제/계약 체결, 다국어 지원, 전용 모바일 앱, 외부 API 연동(향후 단계), 소셜 로그인(후속).
+## 2025-09-26 18:15 KST
+- set-active: BE-6: → BE-6
+- title: 구글 OAuth2 로그인 연동
+- goal: 구글 OAuth2 로그인 연동
+- parsed: goal="구글 OAuth2 로그인 연동" dod="" deliver=""
+- source: tasks_v2.md
 
-## 4. UX 개요
-- 온보딩 설문 흐름: (1) 예산/구매 방식 → (2) 사용 용도/승차 인원 → (3) 선호 차종/브랜드 → (4) 연식/주행거리 허용 범위 → (5) 추가 옵션.
-- 추천 결과 페이지: 추천 점수, 주요 스펙, 예상 유지비, 즐겨찾기 버튼, 비교표에 추가 버튼.
-- 비교표: 최대 4대 차량 셀렉트, 스펙/가격/연비/유지비 비교.
-- 즐겨찾기: 사용자별 저장 목록, 메모 기능(간단한 메모만).
-- 관리자 업로드: CSV 업로드 → 검증 결과 표시(필드 누락/형식 오류) → 적용 버튼.
+## 2025-09-26 18:20 KST
+- set-active: BE-6: → BE-6
+- title: 구글 OAuth2 로그인 연동
+- goal: 구글 OAuth2 로그인 연동
+- parsed: goal="구글 OAuth2 로그인 연동" dod="" deliver=""
+- source: tasks_v2.md
 
-## 5. API 설계 (초안)
-- `POST /api/v1/surveys` : 설문 응답 저장 및 추천 결과 트리거 (Request: 사용자 ID, 설문 답변 리스트 / Response: 추천 ID)
-- `GET /api/v1/recommendations/{id}` : 추천 결과 상세 (추천 차량 리스트, 점수, 이유 요약)
-- `POST /api/v1/favorites` : 즐겨찾기 추가 (차량 ID, 메모)
-- `GET /api/v1/favorites` : 사용자 즐겨찾기 목록 조회
-- `POST /api/v1/compare` : 비교표 대상 등록 및 결과 반환
-- `POST /api/v1/admin/cars/upload` : 관리자 CSV 업로드 (Multipart), 비동기 처리 큐 등록
-- `GET /api/v1/admin/cars/upload/{jobId}` : 업로드 검증/처리 상태 조회
+## 2025-09-26 18:31 KST
+- set-active: BE-6: → BE-6
+- title: 구글 OAuth2 로그인 연동
+- goal: 구글 OAuth2 로그인 연동
+- parsed: goal="구글 OAuth2 로그인 연동" dod="OAuth2 클라이언트 등록, 토큰 교환 플로우, 통합 테스트" deliver="`src/main/java/.../security/*`, `docs/auth_setup.md`"
+- source: tasks_v2.md
 
-## 6. 데이터 모델 (개념 수준)
-- `users(id, email, password_hash, name, role, created_at)`
-- `preferences(id, user_id, budget_min, budget_max, usage, passengers, preferred_body_types, preferred_brands, year_range, mileage_range, options, created_at)`
-- `cars(id, oem_code, model_name, trim, price, body_type, fuel_type, efficiency, seats, drivetrain, release_year, features, media_assets, created_at)`
-- `recommendations(id, user_id, generated_at, rationale, scoring_weights)`
-- `recommendation_items(id, recommendation_id, car_id, score_breakdown, rank)`
-- `favorites(id, user_id, car_id, note, created_at)`
-- `csv_upload_jobs(id, admin_id, original_filename, status, error_report_path, created_at)`
-
-## 7. 아키텍처
-- 프론트엔드: React + Vite PWA, Service Worker로 기본 캐싱, axios 기반 API 통신.
-- 백엔드: Spring Boot 3 (Java 17), REST Controller, Service, Repository 계층, Flyway 기반 DB 마이그레이션, 추천 로직 모듈화.
-- 데이터베이스: PostgreSQL 15, JSONB 컬럼으로 옵션/스펙 확장성 확보.
-- 인프라: Docker Compose (app, postgres, redis). Redis는 추천 캐싱과 업로드 작업 큐용.
-- 배포 (MVP): 단일 리전 VM/컨테이너 배포, GitHub Actions CI, staging/prod 환경 분리.
-
-## 8. 비기능 요구사항
-- 응답 시간: 주요 API 300ms 이하, 추천 생성은 2초 이하(비동기 처리 시 5초 내 완료).
-- 가용성: MVP 99.5% 목표, 장애 시 재시도 로직(추천 캐시 fallback).
-- 보안: TLS 적용, 관리자 API JWT + Role 기반 인증, 비밀번호 Bcrypt 암호화.
-- 확장성: 추천 엔진은 전략 패턴으로 구현, 향후 ML 모델 교체 용이성 확보.
-- 로깅/모니터링: 구조화된 로그(JSON), 기본 APM(New Relic or OpenTelemetry) 도입 고려.
-
-## 9. 테스트 전략
-- 단위 테스트: 추천 점수 계산, CSV 파서 검증, 서비스 레이어 비즈니스 로직.
-- 통합 테스트: REST API -> DB 흐름, Flyway 마이그레이션 검증.
-- E2E 테스트: Cypress 기반 설문 → 추천 → 즐겨찾기 시나리오(주요 브라우저).
-- 비기능 테스트: 부하 테스트(100 rps), CSV 업로드 스트레스 테스트.
-
-## 10. 릴리즈 계획
-- M0 (2주): 설문/추천 API 프로토타입, 기본 UI 와이어프레임, Docker Compose 환경 구축.
-- M1 (4주): 추천 로직 확정, 즐겨찾기/비교표, 관리자 CSV 업로드 베타.
-- M2 (2주): 성능 튜닝, 보안 점검, 스테이징/실 사용자 베타, QA 통과 후 정식 베타 론칭.
-- 이후: 소셜 로그인 추가, 외부 데이터 제휴 탐색, 모바일 앱 검토.
-
-
----
-# FILE: deliverables/tasks.md
-
-# 작업 체크리스트 (자동차 추천 시스템)
-
-## Infra
-- [x] INF-1: Docker Compose 골격 구성
-  - DoD: `docker-compose.yml`에 app/postgres/redis 서비스 정의, 환경 변수 템플릿(`.env.example`) 준비, README에 기동 명령 문서화
-  - Deliverable: `docker-compose.yml`, `.env.example`, `docs/local_setup.md`
-- [x] INF-2: 로컬 인프라 기동 검증
-  - DoD: `docker compose up` 이후 Postgres/Redis 컨테이너 헬스 체크 통과, 애플리케이션 컨테이너에서 `/health` 200 응답 확인, 확인 로그 캡처
-  - Deliverable: `docs/local_setup.md` 업데이트(트러블슈팅 포함), 검증 로그(`logs/infra_bootstrap.md`)
-
-## Backend
-- [x] BE-1: Spring Boot 3 프로젝트 초기화
-  - DoD: Gradle 기반 프로젝트 생성, 기본 패키지 구조 정의, 헬스체크 컨트롤러(`/health`) 200 응답, Flyway 의존성 포함
-  - Deliverable: `build.gradle`, `src/main/java/.../Application.java`, `src/main/resources/application.yml`
-- [x] BE-2: 기본 데이터 모델 & Flyway 마이그레이션 추가
-  - DoD: users/preferences/cars 기본 테이블 스키마 정의, Flyway V1 스크립트 작성 및 로컬 적용 검증
-  - Deliverable: `src/main/resources/db/migration/V1__init.sql`, 적용 결과 로그
-- [x] BE-3: 도메인 엔티티/리포지토리/서비스 뼈대 구현
-  - DoD: JPA 엔티티 생성(users, preferences, cars, recommendations, favorites), Spring Data Repository 인터페이스, 서비스 인터페이스 초안, 단위 테스트 1건 이상
-  - Deliverable: `src/main/java/.../domain/*.java`, `src/test/java/.../repository/*.java`
-- [x] BE-4: 추천 API 초안 구현
-  - DoD: `/api/v1/surveys`, `/api/v1/recommendations/{id}`, `/api/v1/favorites` 기본 흐름 구현, 추천 점수 계산 스텁, 통합 테스트 1건 이상 통과
-  - Deliverable: `src/main/java/.../controller/*.java`, `src/test/java/.../controller/*.java`
-- [x] BE-5: 관리자 CSV 업로드 파이프라인 초안
-  - DoD: Multipart 업로드 엔드포인트, CSV 파서 유효성 검증, 비동기 큐 스텁, 실패/성공 응답 정의, 단위 테스트 포함
-  - Deliverable: `src/main/java/.../admin/*.java`, `src/test/java/.../admin/*.java`
-
-## Frontend
-- [x] FE-1: Vite + React PWA 초기화
-  - DoD: Vite 프로젝트 생성, React Router 기본 구성, PWA(Service Worker, manifest) 설정, CI 빌드 통과
-  - Deliverable: `package.json`, `src/main.jsx`, `public/manifest.webmanifest`
-- [x] FE-2: 온보딩 설문 UI 구현
-  - DoD: 설문 단계별 폼 컴포넌트(예산, 용도, 선호 등) 구현, 유효성 검사, API 연동 스텁, 사용자 입력 상태 관리
-  - Deliverable: `src/features/survey/*`, 스토리북/테스트 케이스(optional)
-- [x] FE-3: 추천 결과 & 즐겨찾기 화면
-  - DoD: 추천 리스트, 비교표 선택, 즐겨찾기 토글 UI, API 연동 모듈, 테스트 1건 이상
-  - Deliverable: `src/features/recommendations/*`, `src/features/favorites/*`
-- [x] FE-4: 관리자 CSV 업로드 화면
-  - DoD: CSV 업로드 폼, 상태 표시(검증 중/완료/오류), 결과 로그 뷰어, 에러 핸들링, API 연동 스텁
-  - Deliverable: `src/features/admin/upload/*`
-- [x] FE-5: 관리자 CSV 업로드 API 연동
-  - DoD: 백엔드 업로드/상태 조회 엔드포인트 호출, 응답/오류 핸들링, 프런트 상태 갱신, 통합 테스트(또는 목 확인)
-  - Deliverable: `src/features/admin/upload/adminUploadApi.js`, `src/features/admin/upload/useAdminUpload.js`
-
-
-## QA / CI
-- [x] QA-1: Backend 테스트 기반 구축
-  - DoD: Testcontainers(Postgres/Redis) 연동, 통합 테스트 템플릿, GitHub Actions에서 테스트 실행 성공
-  - Deliverable: `build.gradle` 테스트 설정, `.github/workflows/backend-ci.yml`
-- [ ] QA-2: Frontend 테스트 및 린트 파이프라인
-  - DoD: Vitest/Testing Library 설정, ESLint/Prettier 구성, GitHub Actions 워크플로 추가, 주요 컴포넌트 테스트 1건 이상
-  - Deliverable: `vitest.config.ts`, `.eslintrc.cjs`, `.github/workflows/frontend-ci.yml`
-
-## Admin
-- [x] ADM-1: CSV 스키마 정의 및 샘플 데이터 작성
-  - DoD: 관리자 업로드용 CSV 필드 목록/데이터 타입 문서화, 필수/선택 구분, 샘플 파일 2종(정상/에러) 작성
-  - Deliverable: `docs/admin/csv_schema.md`, `data/samples/cars_valid.csv`, `data/samples/cars_invalid.csv`
-- [x] ADM-2: CSV 검증 자동화 스크립트 초안
-  - DoD: 업로드 전 사전 검증용 스크립트(`check_csv.py`) 작성, 필수 필드/데이터 타입/중복 검사를 포함, 샘플 데이터로 테스트 로그 확보
-  - Deliverable: `tools/check_csv.py`, `logs/csv_validation.md`
-- [x] ADM-3: 관리자 운영 가이드 작성
-  - DoD: CSV 업로드 절차, 오류 대응 프로세스, 추천 결과 검수 체크리스트 포함한 운영 가이드 초안 작성
-  - Deliverable: `docs/admin/operations_guide.md`
-
-
-
----
-# FILE: rules/1_prd_rules.md
-
-# PRD 생성 규칙
-
-## 목적
-- AI가 결정론적으로 제품 요구사항 문서(PRD)를 생성하도록 한다.
-
-## 사전 질문
-1. 대상 시장/국가, 언어/통화/단위
-2. 초기 출시 범위(Web/Mobile)
-3. 추천 기준 가중치
-4. 데이터 확보 경로
-5. 로그인 방식
-6. 개인정보 보관 정책
-
-## PRD 구성
-1. 개요/비전/목표
-2. 페르소나 & 시나리오
-3. 범위(포함/제외)
-4. UX 개요
-5. API 설계
-6. 데이터 모델
-7. 아키텍처
-8. 비기능 요구사항
-9. 테스트 전략
-10. 릴리즈 계획
-
-## 산출물
-- `deliverables/prd.md`
-
----
-# FILE: rules/2_task_gen_rules.md
-
-# 작업(Task) 생성 규칙
-
-- Markdown 체크박스 형식으로 생성한다.
-- 1~3시간 내 끝낼 수 있는 단위로 쪼갠다.
-- DoD(완료조건)와 산출물을 명시한다.
-- 위험/승인 필요 항목은 라벨을 붙인다.
-
-## 출력
-- `deliverables/tasks.md`
-
----
-# FILE: rules/3_task_exec_rules.md
-
-# 작업(Task) 실행 규칙
-
-1. 한 번에 하나의 Task만 수행한다.
-2. 시작 전 예상/위험/계획 요약.
-3. 완료 후 체크박스 갱신, 커밋 규칙 적용.
-4. 다음 Task 전 사용자 승인 필수.
-5. 실패 시 최소 복구안 제시.
-
----
-# FILE: bootstrap/git_status.txt
-
- M bootstrap/context.md
- M bootstrap/git_status.txt
- M bootstrap/prompt_bundle.md
- M bootstrap/tree.txt
- M build.gradle
- M deliverables/tasks.md
- M docs/history/STATELOG.md
- D frontend/dist/assets/index-BFEHjihe.js
- D frontend/dist/assets/index-CTIeP6_u.css
- M frontend/dist/index.html
- M frontend/src/App.jsx
- M frontend/src/routes/Survey.jsx
- M src/test/java/com/aicarsales/app/admin/AdminCsvUploadControllerTest.java
- M src/test/java/com/aicarsales/app/controller/RecommendationFlowIntegrationTest.java
- M src/test/resources/application-test.yml
-?? .github/
-?? docs/admin/operations_guide.md
-?? frontend/dist/assets/index-D7K64jJE.js
-?? frontend/dist/assets/index-bsT8IXXn.css
-?? frontend/src/features/admin/
-?? frontend/src/routes/AdminUpload.jsx
-?? src/test/java/com/aicarsales/app/support/
-?? tools/
-
-
----
-# FILE: bootstrap/tree.txt
-
-.
-./tools
-./tools/check_csv.py
-./bootstrap
-./bootstrap/context.md
-./bootstrap/git_status.txt
-./bootstrap/rehydrate.sh
-./bootstrap/tree.txt
-./bootstrap/prompt_bundle.md
-./frontend
-./frontend/index.html
-./frontend/dist
-./frontend/node_modules
-./frontend/vite.config.js
-./frontend/README.md
-./frontend/public
-./frontend/.gitignore
-./frontend/package-lock.json
-./frontend/package.json
-./frontend/src
-./docs
-./docs/maintenance_guide.md
-./docs/admin
-./docs/decisions
-./docs/history
-./README.md
-./deliverables
-./deliverables/prd.md
-./deliverables/tasks.md
-./logs
-./logs/status_check.md
-./logs/csv_validation.md
-./.gitignore
-./scripts
-./scripts/seed_sample_cars.sh
-./scripts/status.sh
-./scripts/set_active_task.sh
-./scripts/run_backend.sh
-./scripts/complete_task.sh
-./.github
-./.github/workflows
-./build.gradle
-./.gradle
-./.gradle/vcs-1
-./.gradle/8.7
-./.gradle/buildOutputCleanup
-./.gradle/9.0.0
-./rules
-./rules/3_task_exec_rules.md
-./rules/2_task_gen_rules.md
-./rules/1_prd_rules.md
-./docker-compose.yml
-./build
-./build/generated
-./build/classes
-./build/resolvedMainClassName
-./build/resources
-./build/test-results
-./build/tmp
-./build/reports
-./.git
-./.git/ORIG_HEAD
-./.git/config
-./.git/objects
-./.git/HEAD
-./.git/info
-./.git/logs
-./.git/description
-./.git/hooks
-./.git/refs
-./.git/index
-./.git/COMMIT_EDITMSG
-./.git/FETCH_HEAD
-./.vscode
-./.vscode/task.json
-./settings.gradle
-./data
-./data/samples
-./src
-./src/test
-./src/main
-
-# === BOOTSTRAP BUNDLE END ===
-
+## 2025-09-26 18:32 KST
+- set-active: BE-6: → BE-6
+- title: 구글 OAuth2 로그인 연동
+- goal: 구글 OAuth2 로그인 연동
+- parsed: goal="구글 OAuth2 로그인 연동" dod="OAuth2 클라이언트 등록, 토큰 교환 플로우, 통합 테스트" deliver="`src/main/java/.../security/*`, `docs/auth_setup.md`"
+- source: tasks_v2.md
+```

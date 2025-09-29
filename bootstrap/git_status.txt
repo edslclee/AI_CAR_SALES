@@ -2,22 +2,8 @@
  M bootstrap/git_status.txt
  M bootstrap/prompt_bundle.md
  M bootstrap/tree.txt
- M build.gradle
- M deliverables/tasks.md
  M docs/history/STATELOG.md
- D frontend/dist/assets/index-BFEHjihe.js
- D frontend/dist/assets/index-CTIeP6_u.css
- M frontend/dist/index.html
- M frontend/src/App.jsx
- M frontend/src/routes/Survey.jsx
- M src/test/java/com/aicarsales/app/admin/AdminCsvUploadControllerTest.java
- M src/test/java/com/aicarsales/app/controller/RecommendationFlowIntegrationTest.java
- M src/test/resources/application-test.yml
-?? .github/
-?? docs/admin/operations_guide.md
-?? frontend/dist/assets/index-D7K64jJE.js
-?? frontend/dist/assets/index-bsT8IXXn.css
-?? frontend/src/features/admin/
-?? frontend/src/routes/AdminUpload.jsx
-?? src/test/java/com/aicarsales/app/support/
-?? tools/
+ M scripts/complete_task.sh
+ M scripts/set_active_task.sh
+?? deliverables/prd_v2.md
+?? deliverables/tasks_v2.md
